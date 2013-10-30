@@ -1,8 +1,14 @@
-- if user_signed_in?
-  p hello
-  = link_to 'Edit', edit_user_registration_path
-  = link_to 'Logout', destroy_user_session_path, method: :delete
-- else
-  p login first
-  = link_to 'Login', new_user_session_path
-  = link_to 'Sign up', new_user_registration_path
+.ui.two.column.middle.aligned.relaxed.grid.basic.segment
+  .column
+    .ui.icon.message
+      i.user.icon
+      .content
+        .header Member Already?
+        = link_to ("Login" + content_tag(:i, "", class: [:user, :icon])).html_safe, new_user_session_path, class: [:ui, :teal, :labeled, :icon, :button]
+  .ui.vertical.divider Or
+  .center.aligned.column
+    .ui.icon.message
+      i.user.icon
+      .content
+        .header Not yet a member?
+        = link_to ("Sign up" + content_tag(:i, "", class: [:add, :icon])).html_safe, new_user_registration_path, class: [:ui, :teal, :labeled, :icon, :button]
