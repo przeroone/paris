@@ -34,6 +34,7 @@ gem 'less-rails'
 gem 'semantic-ui-rails'
 gem 'puma'
 gem 'bson_ext'
+gem 'simple_form'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

@@ -1,35 +1,24 @@
-= devise_form do
-  = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+= render layout: "devise/layout" do
+  = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
     h4.ui.top.attached.header Login
     .ui.form.segment.attached
-      .field
-        = f.label :email
-        .ui.left.labeled.icon.input
-          = f.email_field :email, autofocus: true
-          i.user.icon
-          .ui.corner.label
-            i.icon.asterisk
-      .field
-        = f.label :password
-        .ui.left.labeled.icon.input
-          = f.password_field :password
-          i.lock.icon
-          .ui.corner.label
-            i.icon.asterisk
-      .field
-        .ui.toggle.checkbox
-          = f.check_box :remember_me
-          = f.label :remember_me
+      = f.input :email, as: :email, wrapper: :labeled_input do
+        = f.email_field :email
+        i.user.icon
+        .ui.corner.label
+          i.icon.asterisk
+      = f.input :password, as: :password, wrapper: :labeled_input do
+        = f.password_field :password
+        i.lock.icon
+        .ui.corner.label
+          i.icon.asterisk
+      = f.input :remember_me, as: :boolean, wrapper: :checkbox_toggle
       .ui.two.column.grid
-        .column= link_to ('Login' + content_tag(:i, "", class: [:sign, :in, :icon])).html_safe, "", id: 'login-button', class: [:ui, :blue, :labeled, :icon, :button]
+        .column= link_to ('Login' + content_tag(:i, "", class: [:sign, :in, :icon])).html_safe, "", id: 'action-button', class: [:ui, :teal, :labeled, :icon, :button]
         - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
           .right.aligned.column= link_to "Forget Password", new_password_path(resource_name)
-  .ui.horizontal.divider Or
   - if devise_mapping.registerable? && controller_name != 'registrations'
-    = link_to ("Sign up" + content_tag(:i, "", class: [:add, :icon])).html_safe, new_user_registration_path, class: [:ui, :teal, :labeled, :icon, :button]
+    .ui.horizontal.divider Or
+    .ui.grid
+      .center.aligned.column= link_to ("Sign up" + content_tag(:i, "", class: [:add, :icon])).html_safe, new_user_registration_path, class: [:ui, :red, :labeled, :icon, :button]
 
-- content_for :js do
-  coffee:
-    $('#login-button').on 'click', (e) ->
-      e.preventDefault()
-      $('form').submit()
