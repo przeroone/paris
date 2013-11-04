@@ -1,23 +1,23 @@
 = render layout: "devise/layout" do
-  = simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
-    h4.ui.top.attached.header Sign up
-    .ui.form.segment.attached
-      = f.input :email, as: :email, wrapper: :labeled_input do
-        = f.email_field :email
-        i.user.icon
-        .ui.corner.label
-          i.icon.asterisk
-      = f.input :password, as: :password, wrapper: :labeled_input do
-        = f.password_field :password
-        i.lock.icon
-        .ui.corner.label
-          i.icon.asterisk
-      = f.input :password_confirmation, as: :password, wrapper: :labeled_input do
-        = f.password_field :password_confirmation
-        i.lock.icon
-        .ui.corner.label
-          i.icon.asterisk
-      = link_to ("Sign up" + content_tag(:i, "", class: [:add, :icon])).html_safe, "", id: 'action-button', class: [:ui, :red, :labeled, :icon, :button]
+  h4.ui.top.attached.header Sign up
+  = simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: [:segment, :attached, (resource.errors.empty? ? :nil : :error)] } do |f|
+    = devise_error_messages!
+    = f.input :email, as: :email, wrapper: :labeled_input do
+      = f.email_field :email
+      i.user.icon
+      .ui.corner.label
+        i.icon.asterisk
+    = f.input :password, as: :password, wrapper: :labeled_input do
+      = f.password_field :password
+      i.lock.icon
+      .ui.corner.label
+        i.icon.asterisk
+    = f.input :password_confirmation, as: :password, wrapper: :labeled_input do
+      = f.password_field :password_confirmation
+      i.lock.icon
+      .ui.corner.label
+        i.icon.asterisk
+    = link_to ("Sign up" + content_tag(:i, "", class: [:add, :icon])).html_safe, "", id: 'action-button', class: [:ui, :red, :labeled, :icon, :button]
   .ui.horizontal.divider Or
   .ui.grid
     .center.aligned.column= link_to ('Login' + content_tag(:i, "", class: [:sign, :in, :icon])).html_safe, new_user_session_path, class: [:ui, :teal, :labeled, :icon, :button]

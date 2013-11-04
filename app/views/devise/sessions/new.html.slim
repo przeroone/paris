@@ -1,22 +1,28 @@
 = render layout: "devise/layout" do
-  = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
-    h4.ui.top.attached.header Login
-    .ui.form.segment.attached
-      = f.input :email, as: :email, wrapper: :labeled_input do
-        = f.email_field :email
-        i.user.icon
-        .ui.corner.label
-          i.icon.asterisk
-      = f.input :password, as: :password, wrapper: :labeled_input do
-        = f.password_field :password
-        i.lock.icon
-        .ui.corner.label
-          i.icon.asterisk
-      = f.input :remember_me, as: :boolean, wrapper: :checkbox_toggle
-      .ui.two.column.grid
-        .column= link_to ('Login' + content_tag(:i, "", class: [:sign, :in, :icon])).html_safe, "", id: 'action-button', class: [:ui, :teal, :labeled, :icon, :button]
-        - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-          .right.aligned.column= link_to "Forget Password", new_password_path(resource_name)
+  h4.ui.top.attached.header Login
+  = simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: [ :segment, :attached, (flash.empty? ? :nil : :error)] } do |f|
+    .ui.error.icon.message
+      i.icon.red.frown
+      .content
+        .header We noticed some issues
+        ul
+          - flash.each do |name, msg|
+            li= msg
+    = f.input :email, as: :email, wrapper: :labeled_input do
+      = f.email_field :email, autofocus: true
+      i.user.icon
+      .ui.corner.label
+        i.icon.asterisk
+    = f.input :password, as: :password, wrapper: :labeled_input do
+      = f.password_field :password
+      i.lock.icon
+      .ui.corner.label
+        i.icon.asterisk
+    = f.input :remember_me, as: :boolean, wrapper: :checkbox_toggle
+    .ui.two.column.grid
+      .column= link_to ('Login' + content_tag(:i, "", class: [:sign, :in, :icon])).html_safe, "", id: 'action-button', class: [:ui, :teal, :labeled, :icon, :button]
+      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+        .right.aligned.column= link_to "Forget Password", new_password_path(resource_name)
   - if devise_mapping.registerable? && controller_name != 'registrations'
     .ui.horizontal.divider Or
     .ui.grid

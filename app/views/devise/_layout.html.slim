@@ -1,13 +1,6 @@
 .ui.grid
   .five.wide.column
-  .six.wide.column
-    - flash.each do |name, msg|
-      .ui.icon.message class="#{name == :alert ? 'red' : 'teal'}"
-        i.icon class="#{name == :alert ? 'red frown' : 'teal attention'}"
-        .content
-          .header We noticed some issues
-          div(class: name)= msg
-    = yield
+  .six.wide.column= yield
   .five.wide.column
 
 - content_for :js do

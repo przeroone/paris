@@ -88,11 +88,6 @@ SimpleForm.setup do |config|
     b.use :label
     b.wrapper tag: 'div', class: 'ui left labled icon input' do |input|
       input.use :input
-      #input.wrapper tag: 'i', class: 'user icon' do |i| end
-      #input.use :icon
-      #input.wrapper tag: 'div', class: 'ui corner label' do |c|
-      #  c.wrapper tag: 'i', class: 'icon asterisk' do |i| end
-      #end
       input.wrapper tag: 'label' do |slide| end
     end
   end
@@ -163,7 +158,7 @@ SimpleForm.setup do |config|
   # in this configuration, which is recommended due to some quirks from different browsers.
   # To stop SimpleForm from generating the novalidate option, enabling the HTML5 validations,
   # change this configuration to true.
-  config.browser_validations = false
+  config.browser_validations = true
 
   # Collection of methods to detect if a file type was given.
   # config.file_methods = [ :mounted_as, :file?, :public_filename ]

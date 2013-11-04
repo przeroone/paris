@@ -1,0 +1,28 @@
+= render layout: "devise/layout" do
+  h4.ui.top.attached.header Profile
+  = simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: [:segment, :attached] } do |f|
+    = devise_error_messages!
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      .ui.compact.message
+        p Currently waiting confirmation for: #{resource.unconfirmed_email}
+    = f.input :email, as: :email, wrapper: :labeled_input do
+      = f.email_field :email, disabled: true
+      i.user.icon
+      .ui.corner.label
+        i.icon.asterisk
+    .ui.compact.message
+      p Leave blank if you don't want to change password
+    = f.input :password, as: :password, wrapper: :labeled_input do
+      = f.password_field :password
+      i.lock.icon
+      .ui.corner.label
+        i.icon.asterisk
+    = f.input :password_confirmation, as: :password, wrapper: :labeled_input do
+      = f.password_field :password_confirmation
+      i.lock.icon
+      .ui.corner.label
+        i.icon.asterisk
+    = link_to ("Update" + content_tag(:i, "", class: [:save, :icon])).html_safe, "", id: 'action-button', class: [:ui, :teal, :labeled, :icon, :button]
+  h4.ui.bottom.right.aligned.attached.header
+    //h3 Cancel my account
+    = link_to content_tag(:i, "", class: [:remove, :icon]).html_safe + "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: [:ui, :red, :small, :button]
