@@ -1,0 +1,9 @@
+h1 Listing campigns
+
+u
+  - @campigns.each do |c|
+    li
+      b= c.subject
+      span  #{link_to :S, c} | #{link_to :E, edit_campign_path(c)} | #{link_to :D, c, method: :delete, data: { confirm: 'Sure?' } }
+
+= link_to 'New Campign', new_campign_path

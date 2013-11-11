@@ -1,27 +1,47 @@
+// Variables
+@yellow: #E6C973;
+// End of variables
+
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
-}
+  }
+
 body {
   background-image: url(escheresque.png);
   background-repeat: repeat;
   color: #555555;
-}
+  min-width: 320px;
+  }
+
+// Top menu
+.ui.yellow.fixed.menu {
+  top: 0;
+  background-color: @yellow;
+  .container {
+    padding: 0% 8%;
+    .title.item a {
+      font-size: 1.2em;
+      text-decoration: none;
+      }
+    }
+  }
+// End of top menu
+
 // Masthead
-@masthead_bg_color: #E6C973;
 .masthead {
   position: relative;
   overflow: hidden;
-  background-color: @masthead_bg_color;
+  background-color: darken(@yellow, 10%);
   text-align: center;
-  padding: 30px 0px;
+  padding: 50px 0px;
   color: rgba(255, 255, 255, 0.9);
+  margin-top: 45px;
   margin-bottom: 5px;
   border-bottom: none;
   //&:before {
-  //  background: @masthead_bg_color url(escheresque.png) repeat fixed 0% 0%;
+  //  background: darken(@yellow, 10%) url(escheresque.png) repeat fixed 0% 0%;
   //  position: absolute;
   //  z-index: 1;
   //  width: 500%;
@@ -67,45 +87,52 @@ body {
     line-height: 1.2;
     margin: -20px 0px 0px;
     padding-bottom: 0px;
-  }
+    }
   &.segment h2 {
     font-weight: normal;
     margin: -10px 0 16px 0px;
     font-size: 1.75em;
     border-bottom: none;
     line-height: 1;
-  }
+    }
   .grid {
     position: relative;
     z-index: 2;
-  }
+    }
   .column {
     display: table;
+    }
   }
-}
 @keyframes masthead {
   0% { background-position: 0% 0%; }
   50% { background-position: -50% -100%; }
   100% { background-position: -100% -200%; }
-}
+  }
 @-moz-keyframes masthead {
   0% { background-position: 0% 0%; }
   50% { background-position: -50% -100%; }
   100% { background-position: -100% -200%; }
-}
+  }
 @-webkit-keyframes masthead {
   0% { background-position: 0% 0%; }
   50% { background-position: -50% -100%; }
   100% { background-position: -100% -200%; }
-}
+  }
 @-ms-keyframes masthead {
   0% { background-position: 0% 0%; }
   50% { background-position: -50% -100%; }
   100% { background-position: -100% -200%; }
-}
+  }
 @-o-keyframes masthead {
   0% { background-position: 0% 0%; }
   50% { background-position: -50% -100%; }
   100% { background-position: -100% -200%; }
-}
+  }
 // End of Masthead
+
+// Content area
+#content-area {
+  margin-top:45px;
+  padding-top: 20px;
+  }
+// End of content area

@@ -35,6 +35,11 @@ gem 'semantic-ui-rails'
 gem 'puma'
 gem 'bson_ext'
 gem 'simple_form'
+gem 'awesome_print'
+gem 'better_errors'
+gem 'pry'
+gem 'carrierwave'
+gem 'rspec'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
