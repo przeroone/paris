@@ -1,6 +1,11 @@
 h1 Listing campigns
 
-u
+.ui.items.js-masonry(data-masonry-options='{ "itemSelector": ".item" }')
+  - @campaigns.each do |c|
+    .item
+      .image(style="min-height: 255px")= link_to image_tag(c.cover, width: 300), c
+      .content= c.subject
+/u
   - @campaigns.each do |c|
     li
       b= c.subject
