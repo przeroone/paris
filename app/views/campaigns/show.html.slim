@@ -1,7 +1,4 @@
-p
-  b Cover
-  br/
-  = image_tag @campaign.cover
+p= image_tag @campaign.cover
 p
   b Subject
   br/
@@ -10,10 +7,10 @@ p
   b Due Date
   br/
   = @campaign.due_date
-p
+#detail
   b Detail
   br/
-  = @campaign.detail
+  = simple_format(h @campaign.detail)
 
 = link_to 'Edit', edit_campaign_path(@campaign)
 ||
@@ -25,3 +22,15 @@ p
     ul
       - @campaign.updates.each do |u|
         li= u.detail
+
+- content_for :js do
+  coffee:
+    w = 500
+    h = 400
+
+    obj = '<object width="' + w + '" height="' + h + '" class="video">' + '<param name="movie" value="http://www.youtube.com/v/[vid]&hl=en&fs=1">' + '</param><param name="allowFullScreen" value="true"></param><param ' + 'name="allowscriptaccess" value="always"></param><em' + 'bed src="http://www.youtube.com/v/[vid]&hl=en&fs=1" ' + 'type="application/x-shockwave-flash" allowscriptaccess="always" ' + 'allowfullscreen="true" width="' + w + '" ' + 'height="' + h + '"></embed></object>'
+
+    $('#detail p:contains("youtube.com/watch")').each ->
+      that = $(this)
+      vid = that.html().match(/(?:v=)([\w\-]+)/g)
+      $.each vid, -> that.html(obj.replace(/\[vid\]/g, this.replace('v=',''))) if vid.length
