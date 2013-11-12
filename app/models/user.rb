@@ -7,7 +7,8 @@ class User
 
   ## Database authenticatable
   field :email,              type: String, default: ""
-  field :name
+  field :name,               type: String, default: ""
+  mount_uploader :avatar, AvatarUploader
   field :encrypted_password, type: String, default: ""
 
   ## Recoverable
