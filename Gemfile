@@ -38,8 +38,10 @@ gem 'simple_form'
 gem 'awesome_print'
 gem 'better_errors'
 gem 'pry'
-gem 'carrierwave'
 gem 'rspec'
+gem 'carrierwave'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

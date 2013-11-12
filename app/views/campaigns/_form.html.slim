@@ -1,0 +1,6 @@
+= simple_form_for(@campaign) do |f|
+  = f.input :subject
+  = f.input :due_date
+  = f.input :detail, as: :text
+  = f.input :cover, as: :file
+  = f.submit

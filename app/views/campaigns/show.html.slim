@@ -1,0 +1,27 @@
+p
+  b Cover
+  br/
+  = image_tag @campaign.cover
+p
+  b Subject
+  br/
+  = @campaign.subject
+p
+  b Due Date
+  br/
+  = @campaign.due_date
+p
+  b Detail
+  br/
+  = @campaign.detail
+
+= link_to 'Edit', edit_campaign_path(@campaign)
+||
+= link_to 'Back', campaigns_path
+
+- unless @campaign.updates.empty?
+  p
+    b Updates
+    ul
+      - @campaign.updates.each do |u|
+        li= u.detail

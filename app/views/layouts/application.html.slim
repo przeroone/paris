@@ -17,12 +17,15 @@ html
             = link_to (content_tag(:i, "", class: [:add, :icon]) + 'Sign up').html_safe, new_user_registration_path, class: :item
 
     - unless user_signed_in?
-      .masthead.segment
+      /.masthead.segment
         .ui.page.grid
           .column
             .introduction
               h1.ui.header Paris
-      = yield
+      .ui.grid#content-area
+        .three.wide.column
+        .ten.wide.column= yield
+        .three.wide.column
     - else
       .ui.grid#content-area
         .three.wide.column

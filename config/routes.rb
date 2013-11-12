@@ -1,5 +1,5 @@
 Paris::Application.routes.draw do
-  resources :campigns
+  resources :campaigns
 
   devise_for :users
   root "home#index"
